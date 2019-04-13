@@ -15,34 +15,26 @@ bool triangulo(double a,double b,double c)
     if((a < b+c) && (b<a+c) && (c<a+b))return true;
     return false;
 }
+bool prim(int x)
+{
+    for(int i=2;i*i<=x;i++)if(x%i==0)return false;
+    return true;
+}
 int main()
 {
     ios::sync_with_stdio(0);
-    cin.tie(0);
-    string a1,a;
-    int w,w1,x,y,z,x1,y1,z1;
-    cin>>a;
-    cin>>w;
-    scanf("%d : %d : %d",&x,&y,&z);
-    cin>>a1;
-    cin>>w1;
-    scanf("%d : %d : %d",&x1,&y1,&z1);
-    //cout<<x<< " " <<y<<" "<<z;
-    if(x1<x){
-        w=w1-w-1;
-        x1=x1+24-x;
-    }
-    else {x1-=x;
-        w=w1-w;
-    }
-        if(y1<y){
-            y1=y1+60-y;
-            x1--;
-        }else y1=y1-y;
-        if(z1<z){
-            z1=z1+60-z;
-            y1--;
-        }else z1=z1-z;
-    cout<<w<<" dia(s)\n"<<x1<<" hora(s)\n"<<y1<<" minuto(s)\n"<<z1<< " segundo(s)\n";
+   // cin.tie(0);
+   int n;
+   cin>>n;
+   int cont=0;
+   int j=0;int sum=0;
+   while(j++<n){
+       sum=0;
+        for(int i=1;i<j;i++)
+        {
+            if(j%i==0)sum+=i;
+        }
+        if(sum==j)cout<<j<<"\n";
+   }
     return 0;
 }

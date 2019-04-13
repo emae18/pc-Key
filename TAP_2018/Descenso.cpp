@@ -10,28 +10,22 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
-ll mRecta(ll x1,ll y1,ll x2, ll y2)
-{
-    ll r=(max(x1,x2)-min(x1,x2))
-    return ;
-}
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n;
-    cin>>n;
-    vi v(n,0);
-    vi r;
-    int cont =0;
-    for(int i=0;i<n;i+=2)
+    int n,m;
+    cin>>n>>m;
+    vector<double> v;
+    double aux=0;
+    while(aux<=n-1)
     {
-        cin>>v[i]>>v[i+1];
-        if(i)
-        {
-            r.push_back()
-        }
+        v.push_back(aux);
+        aux+=0.5;
     }
-
-    cout<<cont<<"\n";
+    cout<<fixed<<setprecision(1);
+    if((v.size()+1)%2==0)
+        cout<<v[(v.size()/2.0)+m]<<"\n";
+    else
+        cout<<v[(v.size()/2.0)+m+1]<<"\n";
     return 0;
 }

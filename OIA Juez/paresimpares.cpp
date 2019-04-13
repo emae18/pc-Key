@@ -18,31 +18,13 @@ bool triangulo(double a,double b,double c)
 int main()
 {
     ios::sync_with_stdio(0);
-    cin.tie(0);
-    string a1,a;
-    int w,w1,x,y,z,x1,y1,z1;
-    cin>>a;
-    cin>>w;
-    scanf("%d : %d : %d",&x,&y,&z);
-    cin>>a1;
-    cin>>w1;
-    scanf("%d : %d : %d",&x1,&y1,&z1);
-    //cout<<x<< " " <<y<<" "<<z;
-    if(x1<x){
-        w=w1-w-1;
-        x1=x1+24-x;
+   // cin.tie(0);
+   int n;
+   cin>>n;int sum=0;
+   forisn(i,1,n+1){
+        if(i%2==0)sum+=i;
+        else sum-=i;
     }
-    else {x1-=x;
-        w=w1-w;
-    }
-        if(y1<y){
-            y1=y1+60-y;
-            x1--;
-        }else y1=y1-y;
-        if(z1<z){
-            z1=z1+60-z;
-            y1--;
-        }else z1=z1-z;
-    cout<<w<<" dia(s)\n"<<x1<<" hora(s)\n"<<y1<<" minuto(s)\n"<<z1<< " segundo(s)\n";
+    cout<<sum<<"\n";
     return 0;
 }

@@ -10,9 +10,28 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    //cout.tie(NULL);
     int nc;
     int n,k;
+    cin>>nc;
+    int aux;
+    forin(j,nc)
+    {
+        cin>>n>>k;
+        aux=k;
+        vector<int> v(n,1);
+        set<int> s;
+        forin(a,n)s.insert(a);
+        while(s.size()!=1)
+        {
+            if(v[aux-1]==0){if(aux>v.size())aux-=n;else aux++;continue;}
+            v[aux-1]=0;
+            s.erase(aux-1);
+
+        }
+        cout<<s.size()<<"\n";
+        foritset(k,s)cout<<*k<<"\n";
+        cout<<"Case "<<j<<": "<<*s.begin()<<"\n";
+    }
 
     return 0;
 }
