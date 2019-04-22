@@ -10,10 +10,23 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
+ll fact(ll n)
+{
+    if(n==1)return 1;
+    else
+    return n * fact(n-1);
+}
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    ll n,a;
+    cin>>n;
+    while(n--)
+    {
+        cin>>a;
+        ll f=fact(a);
+        cout<<f%10<<"\n";
+    }
     return 0;
 }

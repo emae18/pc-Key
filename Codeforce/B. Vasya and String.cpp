@@ -10,10 +10,23 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
+
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int n,k;
+    cin>>n>>k;
+    string ab,aux;
+    cin>>ab;
+    aux=ab;unordered_multiset<char> ms;
+    forin(i,n)
+        ms.insert(ab[i]);
+//    cout<<ms.count('a')<<" b: "<<ms.count('b');
+    int cantA=ms.count('a');
+    int cantB=ms.count('b');
+    size_t t;
 
     return 0;
 }

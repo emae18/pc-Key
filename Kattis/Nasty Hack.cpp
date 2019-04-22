@@ -10,6 +10,7 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
+
 int main()
 {
     ios::sync_with_stdio(0);

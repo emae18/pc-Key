@@ -10,10 +10,22 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int x,n;
+    cin>>x>>n;
+    vector<int> v(n,0);
+    forin(i,n)cin>>v[i];
+    int res=x;
+    forin(i,n)
+    {
+        res-=v[i];
+        res+=x;
+    }
+    cout<<res<<"\n";
 
     return 0;
 }

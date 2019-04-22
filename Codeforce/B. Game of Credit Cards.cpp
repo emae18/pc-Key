@@ -10,10 +10,27 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
-int main()
-{
+
+int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int n;
+    cin>>n;string a,b;
+    cin>>a;
+    cin>>b;
+    vi v(n,0);
+    vi q(n,0);int qc=0,vc=0;
+    forin(i,n)v[i]=a[i]-'0';
+    forin(i,n)
+    {
+        q[i]=b[i]-'0';
+        if(q[i]!=v[i])
+        {
+            if(find(v.begin(),v.end(),q[i])!=v.end())
+                qc++;
+            else vc++;
+        }
+    }
+    cout<<vc<<"\n"<<qc<<"\n";
     return 0;
 }

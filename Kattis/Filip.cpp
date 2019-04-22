@@ -14,6 +14,14 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    string x,y;
+    cin>>x>>y;
+    int a=0,b=0;
+    forin(i,x.size())
+    {
+        a+=(x[i]-'0')*pow(10,i);
+        b+=(y[i]-'0')*pow(10,i);
+    }
+    cout<<max(a,b)<<"\n";
     return 0;
 }

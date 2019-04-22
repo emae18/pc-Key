@@ -23,6 +23,7 @@ int main(){
     }
     multiset<double> ms;
     //cout << rec.size()<<endl;
+    vector<pair<int,int> > punTri;
     forin(i,rec.size())
     {
         forisn(j,i,rec.size())

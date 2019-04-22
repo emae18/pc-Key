@@ -14,6 +14,10 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    string a;
+    cin>>a;
+    forin(i,a.size())
+        if(int(a[i]) > 64 && int(a[i])<91)cout<<a[i];
+    cout<<"\n";
     return 0;
 }
