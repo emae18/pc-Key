@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 #define forin(i,n) for(int i=0;i<n;i++)
 #define forisn(i,s,n) for(int i=s;i<int(n);i++)
@@ -16,44 +17,43 @@ int main()
     cin.tie(0);
     int n,m,k;
     cin>>n>>m>>k;
-    vector<string> v(n,"");
-    vector<string> z(m,"");
-    vector<string> pal;
-    forin(i,n)
+    vector<string> pal;string aux;
+    forin(i,n){cin>>aux;pal.push_back(aux);}
+    vector<string> z(pal.begin(),pal.end());
+    forin(i,n){reverse(z[i].begin(),z[i].end());pal.push_back(z[i]);}
+    vector<string> v(m,"");
+    forin(i,z.size())
     {
-        cin>>v[i];
-        pal.push_back(v[i]);
-        reverse(v[i].begin(),v[i].end());
-        pal.push_back(v[i]);
-        forin(j,m)
-            z[j]+=v[i][j];
+        forin(j,z[i].size())
+        {
+            v[j]+=z[i][j];
+        }
     }
-    forin(i,m)
-    {pal.push_back(z[i]);
-        reverse(z[i].begin(),z[i].end());
-        pal.push_back(z[i]);
-    }
-    string aux;/*
+    forin(i,v.size())pal.push_back(v[i]);
+    forin(i,v.size()){reverse(v[i].begin(),v[i].end());pal.push_back(v[i]);}
+    string aa="";vector<string> xx;
     forin(i,pal.size())
     {
-        cout<<pal[i]<<"\n";
-    }*/
-    bool band;
-    forin(i,k)
-    {
-        cin>>aux;
-        int j=0;
-        band=false;
-        while(j<pal.size() && !band)
+        forin(f,pal[i].size())
         {
-            forin(t,pal[j].size())
+            forisn(j,0,f+2)
             {
-
+                aa+=pal[i][j];
             }
-            j++;
+            xx.push_back(aa);
+            aa="";
         }
-        if(band)cout<<"SI\n";else cout<<"NO\n";
-
     }
+    set<string> s;
+    forin(i,pal.size())s.insert(pal[i]);
+    forin(i,xx.size())s.insert(xx[i]);
+    cout<<"\n";
+    for(set<string>::iterator it=s.begin();it!=s.end();it++)cout<<*it<<"\n";
+    /*forin(i,k){
+        cin>>aux;
+        if(s.find(aux)!=s.end())cout<<"SI\n";
+        else cout<<"NO\n";
+    }*/
+
     return 0;
 }

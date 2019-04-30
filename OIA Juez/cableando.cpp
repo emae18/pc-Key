@@ -23,16 +23,14 @@ int main()
         cin>>aux;
         s.push_back(aux);
     }
+    s.push_back(k);
     sort(s.begin(),s.end());
-    ll men=s[0];
-    ll may=s[s.size()-1];
     ll sum=0;
-    if(k==men || k==may)cout<<may-men<<"\n";
-    else if(men==may)
-        cout<<may-k<<"\n";
-    else{
-        sum+=(k-men)+(may-k);
-        cout<<sum<<"\n";
+    forin(i,s.size()-1)
+    {
+            sum+=(s[i+1]-s[i]);
     }
+    //sum+=(k-men)+(may-k);
+    cout<<sum<<"\n";
     return 0;
 }

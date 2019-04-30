@@ -64,10 +64,10 @@ int main()
             sort(sums.begin(),sums.end());
             if(sums[0].first==sums[1].first)
             {
-                if(sums[0].first<sums[1].first)cout<<sums[0].second+1<<" "<<sums[0].first+mi<<"\n";
-                else cout<<sums[1].second+1<<" "<<sums[1].first+mi<<"\n";
+                if(sums[0].first<sums[1].first)cout<<sums[0].second+1<<" "<<sums[0].first<<"\n";
+                else cout<<sums[1].second+1<<" "<<sums[1].first<<"\n";
             }else{
-                cout<<sums[0].second+1<<" "<<sums[0].first+mi<<"\n";
+                cout<<sums[0].second+1<<" "<<sums[0].first<<"\n";
             }
         }else{
             if(z>k-1)
