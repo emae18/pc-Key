@@ -10,6 +10,7 @@ typedef pair<int, int> pii;
 typedef vector<pii> vii;
 typedef set<int> si;
 typedef map<string, int> msi;
+
 void sumar(vector<int> k, set<int> &s)
 {
     int sum=0;
@@ -37,7 +38,12 @@ int main()
     forin(i,m)
         forin(j,n)sums[i+n].push_back(v[j][i]);
     set<int> s;
-    forin(i,sums.size())sumar(sums[i],s);
+    forin(i,sums.size())
+    {
+        sumar(sums[i],s);
+    }
+    for(auto z : s)cout<<z<<" ";
+    cout<<"\n";
     cout<<*s.rbegin()<<"\n";
     return 0;
 }
