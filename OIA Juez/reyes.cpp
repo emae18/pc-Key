@@ -1,31 +1,40 @@
-#include<bits/stdc++.h>;
+#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
+  //  ifstream cin("truco.in");
+    //ofstream cout("truco.out");
     int n;
     cin>>n;
     vector<int> v(n,1);
-    int aux; char au;
-    int c=40;int i=1;int m=0;
-    while(c--)
+    char au;
+    int c=40;
+    vector<int> v1(c,0);
+    for(int i=0;i<c;i++)
+        cin>>v1[i]>>au;
+    int cont=0; int j=1;vector<int> r1;
+    vector<int> inv;bool band=true;
+    for(int i=0;i<c;i++)
     {
-        cin>>aux>>au;
-        if(i>n)i=i%n;
-        if(aux==12)
+        band=true;
+        if(v1[i]==12)
         {
-            n--;
-            v[i]=0;
-            m++;
+            cont++;
+            if(find(inv.begin(),inv.end(),j)!=inv.end()){band=false;j++;i--;}
+            else {inv.push_back(j);
+            r1.push_back(j);}
         }
-        i++;
-        //if(m==n/2)break;
+        if(j==n)j=j%n;
+        if(band)j++;
+        if(cont==n/2)break;
     }
-    for(int k=0;k<n/2;k++)
+    for(int i=0;i<r1.size();i++)
+        cout<<r1[i]<<" ";
+    cout<<"\n";
+    for(int i=1;i<n+1;i++)
     {
-            int in= distance(v.begin(),find(v.begin(),v.end(),0));
-            cout<<in+1<<" ";
-            v[in]=1;
+        if(find(r1.begin(),r1.end(),i)!=r1.end())continue;
+        cout<<i<<" ";
     }
-
     return 0;
 }
