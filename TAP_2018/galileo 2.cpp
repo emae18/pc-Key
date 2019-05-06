@@ -7,7 +7,13 @@
 using namespace std;
 bool esRect(double a,double b, double c)
 {
-    return pow(a,2)==(pow(b,2)+pow(c,2));
+    vector<double> k;
+    k.push_back(a);
+    k.push_back(b);
+    k.push_back(c);
+    sort(k.begin(),k.end());
+    cout<<a<<" "<<b<<" "<<c<<"\n";
+    return (pow(k[2],2)==pow(k[0],2)+pow(k[1],2));
 }
 int main(){
     ios::sync_with_stdio(0);
@@ -16,16 +22,32 @@ int main(){
     cin>>n;
     vector<pair<int, int> > rec;
     vector<pair<int, int> > p;
+    vector<double > lis;double la;
     forin(i,n)
     {
         cin>>a>>b;
-        if(i){
+        if(i>0){
             forin(j,p.size())
-                rec.push_back({a-p[j].first,b-p[j].second });
+                la=sqrt(pow(a-p[j].first,2)+pow(b-p[j].second,2));
+                cout<<la<<"\n";
+                lis.push_back(la);
+     //           rec.push_back({a-p[j].first,b-p[j].second,b-p[j].second });
         }
-        p.push_back({a,b});
+        cout<<a<<b<<"\n";
     }
-
+    n=lis.size();int cont=0;
+    cout<<n<<"\n";
+    forin(i,n)
+    {
+        forisn(j,i+1,n)
+        {
+            forisn(z,i+2,n)
+            {
+                if(esRect(lis[i],lis[j],lis[z]))cont++;
+            }
+        }
+    }
+    cout<<cont<<"\n";
     multiset<double> ms;
     //cout << rec.size()<<endl;
     vector<pair<int,int> > punTri;

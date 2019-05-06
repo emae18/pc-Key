@@ -16,16 +16,17 @@ int main(){
     cin>>n;
     vector<pair<int, int> > rec;
     vector<pair<int, int> > p;
+    vector<double> lineas;
     forin(i,n)
     {
         cin>>a>>b;
         if(i){
             forin(j,p.size())
+
                 rec.push_back({a-p[j].first,b-p[j].second });
         }
         p.push_back({a,b});
     }
-
     multiset<double> ms;
     //cout << rec.size()<<endl;
     vector<pair<int,int> > punTri;
