@@ -16,26 +16,27 @@ bool isPal(string a)
         if(a[i]!=a[a.size()-1-i])return false;
     return true;
 }
+bool primo[100000001];
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int a,b,c;
-    ifstream cin("casi-primo.in");
-    ofstream cout("casi-primo.out");
+    //ifstream cin("casi-primo.in");
+    //ofstream cout("casi-primo.out");
     cin>>a>>b>>c;int cont=0,con=0;
-    int i=a;
-    if(i%2==0)i++;
-    while(i<=b){
-        forisn(j,3,c+1)
+    for(int i=2;i<b;i++)primo[i]=true;
+    for(int i=2;i<c;i++)
+    {
+        for(int j=2;i*j<b;j++)
         {
-          //  cout<<i<<" "<<j<<"\n";
-            if(i%j==0){cont=1;break;}
+            primo[i*j]=false;
         }
-        if(cont==0)con++;
-        cont=0;
-        i+=2;
     }
-    cout<<con<<"\n";
+    for(int i=a;i<=b;i++)
+    {
+        if(primo[i])cont++;
+    }
+    cout<<cont<<"\n";
     return 0;
 }
