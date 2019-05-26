@@ -1,20 +1,19 @@
 #include <bits/stdc++.h>
+#define forin(i,n) for(int i=0;i<n;i++)
 using namespace std;
+int n,num;
 int main(){
-    int n,num;
-    set <int> even;
-    set<int> odd;
-    cin>> n;
-    while(n--){
+    vector <int> even;
+    vector<int> odd;
+    cin>>n;
+   forin(i,n){
         cin>>num;
-        if(num%2==0) even.insert(num);
-        else odd.insert(num);
+        if(num%2==0) even.push_back(num);
+        else odd.push_back(num);
     }
-    for(    set<int>::iterator it = even.begin(); it != even.end();++it){
-        cout << *it<< "\n";
-    }
-    for(    set<int>::reverse_iterator it = odd.rbegin(); it != odd.rend();++it){
-        cout << *it <<"\n";
-    }
+    sort(even.begin(),even.end());
+    sort(odd.begin(),odd.end(),greater<int> ());
+    forin(i,even.size())cout<<even[i]<<"\n";
+    forin(i,odd.size())cout<<odd[i]<<"\n";
     return 0;
 }
