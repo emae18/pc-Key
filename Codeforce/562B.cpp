@@ -16,11 +16,6 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
-typedef function<bool(pair<int,int>,pair<int,int>)> Comparator;
-Comparator comp=[](pair<int,int> a,pair<int,int> b)
-{
-    return a.second>b.second;
-};
 vector<pii> v;
 int main()
 {
@@ -36,17 +31,9 @@ int main()
         x[v[i].first]++;
         y[v[i].second]++;
     }
-    set<pii,Comparator> sx(x.begin(),x.end(),comp);
-    set<pii,Comparator> sy(y.begin(),y.end(),comp);
-    set<pii>::iterator itx=sx.begin();
-    set<pii>::iterator ity=sy.begin();
-    bool band=false;
-    forin(i,v.size())
+    for(auto a : v)
     {
-        if((v[i].first==*itx || v[i].first==*ity) && (v[i].second==*itx || v[i].second==*ity) )
-        {
-            band=true;
-        }
+        cout<<a.first;
     }
     cout<<((band)?"YES\n":"NO\n");
     return 0;
