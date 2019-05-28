@@ -3,7 +3,9 @@
 #define forin(i,n) for(int i=0;i<n;i++)
 #define forisn(i,s,n) for(int i=s;i<n;i++)
 #define nforin(i,n) for(int i=n;i>-1;i--)
-#define mostrar(x,s) for(auto x : s)
+#define mostrar(x,s) for(auto x : s)cout<<x<<" ";
+#define desc greater<int>()
+#define asc less<int>()
 #define all(v) v.begin(),v.end()
 //loops and more
 using namespace std;
@@ -20,6 +22,5 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
     return 0;
 }
