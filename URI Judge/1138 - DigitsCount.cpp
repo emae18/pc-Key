@@ -22,33 +22,18 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int nc;
-    cin>>nc;
-    int n,k;
-    forisn(z,1,nc+1)
+    int a,b;
+    while(cin>>a>>b)
     {
-        cin>>n>>k;
-        vi v(n);
-        vi m(n+1);
-        forin(i,n)v[i]=i+1;
-        int i=k;int j=k;
-        while(v.size()!=1)
+        if(a == 0 && b==0)break;
+        vi v(10);
+        forisn(i,a,b+1)
         {
-            if(j==k)
-            {
-                v.erase(find(all(v),i));
-                m[i]=1;
-                j=0;
-            }
-            if(m[i]==1)i++;
-            else
-            {
-                j++;
-                if(j!=k)i++;
-            }
-            if(i>*v.rbegin())i=*v.begin();
+            string a = to_string(i);
+            forin(z,a.size())v[a[z]-'0']++;
         }
-        cout<<"Case "<<z<<": "<<i<<"\n";
+        mostrar(x,v);
+        cout<<"\n";
     }
     return 0;
 }
