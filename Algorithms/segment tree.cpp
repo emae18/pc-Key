@@ -19,9 +19,36 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+vi sg(30);
+vi v;
+void build(int nod,int l,int r)
+{
+    if(l==r)
+        sg[nod]=v[l];
+    else{
+        build(2*nod,l,(r+l)/2);
+        build(2*nod+1,((l+r)/2)+1,r);
+        sg[nod]=sg[2*nod]+sg[2*nod+1];
+    }
+}
+int sum(int n ,int start,int e,int l, int r) {
+    if(l<start || r>e)return 0;
+    if(start>=l && e<=r)return sg[n];
+    int p1=sum(2*n,start,(start+e)/2,l,r);
+    int p2=sum(2*n+1,(start+e)/2+1,e,l,r);
+    return p1+p2;
+}
 int main()
 {
     ios::sync_with_stdio(0);
-    cin.tie(0);
+    cin.tie(0);int n,l,r;
+    cin>>n;
+    v.resize(n);
+    forin(i,n)cin>>v[i];
+    cin>>l>>r;
+    build(1,0,n-1);
+    for(auto x : sg)cout<<x<<" ";
+    cout<<"\n";
+    cout<<sum(1,0,n-1,l,r)<<"\n";
     return 0;
 }
