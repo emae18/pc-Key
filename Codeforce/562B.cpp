@@ -16,25 +16,36 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
-vector<pii> v;
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int n,m;
     cin>>n>>m;
-    v.resize(m);
-    map<int,int> x;
-    map<int,int> y;
+    vector<pii> v(m);
+    vector<pii> x(n+1);
+    vector<pii> y(n+1);
+    multiset<int> msx,msy;
     forin(i,m)
     {cin>>v[i].first>>v[i].second;
-        x[v[i].first]++;
-        y[v[i].second]++;
+        msx.insert(v[i].first);
+        msy.insert(v[i].second);
+        x[v[i].first].first++;
+        x[v[i].first].second=v[i].first;
+        y[v[i].second].first++;
+        y[v[i].second].second=v[i].second;
     }
-    for(auto a : v)
+    sort(all(x),greater<pii>());
+    sort(all(y),greater<pii>());cout<<"\n";
+    for(auto a : x)
     {
-        cout<<a.first;
+        cout<<a.first<<" "<<a.second<<"\n";
     }
-    cout<<((band)?"YES\n":"NO\n");
+    cout<<"\n";
+    for(auto a : y)
+    {
+        cout<<a.first<<" "<<a.second<<"\n";
+    }
+
     return 0;
 }

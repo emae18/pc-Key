@@ -19,37 +19,33 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
-typedef struct Trie *ptrie;
-struct Trie{
-    map<char,ptrie> edges;
-    bool fin;
-};
+map<ll,vector<ll> > m;
+unsigned long long fact(ll m)
+{
+    if(m==2) return 2;
+    return m*fact(m-1);
+}
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    string v[4];
-    ptrie dic= new Trie;
-    dic->fin = false;
-    forin(i,4)cin>>v[i];
-    forin(i,4)
+    ll n;
+    cin>>n;int aux,aq;
+    forin(i,n-1)
     {
-        forin(j,v[i].size())
-        {
-            if(!dic->edges.count(v[i][j]))
-                dic->edges[v[i][j]]=new Trie;
-            else{
-                dic->edges[v[i][j]]->edges[v[]
-            }
-        }
+        cin>>aux>>aq;
+        m[aux].push_back(aq);
+    }ll ans=0;
+    if(m.size()==1){
+        cout<<fact(n)%998244353<<"\n";
+        return 0;
     }
-    //if(!dic->edges.count('c'))/
-      //  dic->edges['c']=new Trie;
-    /*for(auto x : dic->edges)
-      cout<<x.first<<"\n";**/
-
-
-
-
+    ll k=0;
+    while(m.size()!=1)
+    {
+        k+=m.rbegin()->first*m.rbegin()->second.size();
+        m.erase(m.rbegin()->first);
+    }
+    cout<<((fact(n)/k)+n)%998244353 <<"\n";
     return 0;
 }

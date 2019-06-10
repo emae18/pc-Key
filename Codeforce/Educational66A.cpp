@@ -19,37 +19,35 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
-typedef struct Trie *ptrie;
-struct Trie{
-    map<char,ptrie> edges;
-    bool fin;
-};
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    string v[4];
-    ptrie dic= new Trie;
-    dic->fin = false;
-    forin(i,4)cin>>v[i];
-    forin(i,4)
+    int t;
+    cin>>t;
+    long long n,k;
+    while(t--)
     {
-        forin(j,v[i].size())
+        long long i=0;
+        cin>>n>>k;
+        if(k==n){cout<<2<<"\n";continue;}
+        if(k>n){cout<<n<<"\n";continue;}
+        while(n>0)
         {
-            if(!dic->edges.count(v[i][j]))
-                dic->edges[v[i][j]]=new Trie;
-            else{
-                dic->edges[v[i][j]]->edges[v[]
+            if(n%k==0)
+            {
+                n/=k;
+                i++;
+            }else{
+
+                i+=(n%k);
+                n-=(n%k);
             }
+            if(k==n){i+=2;break;}
+            if(k>n){i+=n;break;}
+
         }
+        cout<<i<<"\n";
     }
-    //if(!dic->edges.count('c'))/
-      //  dic->edges['c']=new Trie;
-    /*for(auto x : dic->edges)
-      cout<<x.first<<"\n";**/
-
-
-
-
     return 0;
 }

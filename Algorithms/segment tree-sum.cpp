@@ -28,39 +28,52 @@ void build(int nod,int l,int r)
     else{
         build(2*nod,l,(r+l)/2);
         build(2*nod+1,((l+r)/2)+1,r);
-        sg[nod]=sg[2*nod] +sg[2*nod+1];
+        sg[nod]=sg[2*nod]+sg[2*nod+1];
     }
 }
 int sum(int n ,int start,int e,int l, int r) {
-    if(l>e || r<start)return 0;
+    if(l<start || r>e)return 0;
     if(start>=l && e<=r)return sg[n];
     int p1=sum(2*n,start,(start+e)/2,l,r);
     int p2=sum(2*n+1,(start+e)/2+1,e,l,r);
-    if(p1==0)return p2;
-    if(p2==0)return p1;
     return p1+p2;
 }
-int rqm(int n,int s, int e, int l, int r)
+void update(int node, int start, int end, int idx, int val)
 {
-    if(l>e || r<start)return -1;
-    if(start>=l && e<=r)return sg[n];
-    int p1=sum(2*n,start,(start+e)/2,l,r);
-    int p2=sum(2*n+1,(start+e)/2+1,e,l,r);
-    if(p1==-1)return p2;
-    if(p2==-1)return p1;
-    return min(p1,p2);
+    if(start == end)
+    {
+        // Leaf node
+    z[idx] += val;
+        sg[node] += val;
+    }
+    else
+    {
+        int mid = (start + end) / 2;
+        if(start <= idx and idx <= mid)
+        {
+            // If idx is in the left child, recurse on the left child
+            update(2*node, start, mid, idx, val);
+        }
+        else
+        {
+            // if idx is in the right child, recurse on the right child
+            update(2*node+1, mid+1, end, idx, val);
+        }
+        // Internal node will have the sum of both of its children
+        tree[node] = tree[2*node] + tree[2*node+1];
+    }
 }
 int main()
 {
     ios::sync_with_stdio(0);
-    cin.tie(0);int n,l,a,b,r,q;
+    cin.tie(0);int n,l,r;
     cin>>n;
     v.resize(n);
     forin(i,n)cin>>v[i];
-    build(1,0,n-1);string aux;
-    //for(auto x : sg)cout<<x<<" ";
-    cin>>a>>b;
-   //s cout<<"\n";
-    cout<<sum(1,0,n-1,a,b)<<"\n";
+    cin>>l>>r;
+    build(1,0,n-1);
+    for(auto x : sg)cout<<x<<" ";
+    cout<<"\n";
+    cout<<sum(1,0,n-1,l,r)<<"\n";
     return 0;
 }
