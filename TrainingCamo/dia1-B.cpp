@@ -23,6 +23,24 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    double n,m;
+    while(cin>>m>>n)
+    {
+        if(m==-1 && n==-1)return 0;
+        if(m==n){cout<<"*********100%*******\n";continue;}
+        double r=m/n;
+        int x=r*100;
+        double k=r*20;
+        //cout<<k<<"\n";
+        string a="";
+        forin(i,trunc(k))a+='*';
+        forisn(i,k,20)a+='-';
+        stringstream ss;
+        ss<<x;
+        string p=ss.str();
+        forin(i,p.size())a[9+i]=p[i];
+        a[9+p.size()]='%';
+        cout<<a<<"\n";
+    }
     return 0;
 }

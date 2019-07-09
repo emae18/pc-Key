@@ -19,39 +19,39 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
-vi sg;
+vector<char> sg;
 int n,l,a,b,r,q;
 vi v;
 void build(int nod,int l,int r)
 {
     if(l==r)
-        sg[nod]=v[l];
+        sg[nod]=((v[l]>0)?'+':((v[l]<0)?'-':'0'));
     else{
         build(2*nod,l,(r+l)/2);
         build(2*nod+1,((l+r)/2)+1,r);
-        sg[nod]=sg[2*nod]*sg[2*nod+1];
+        sg[nod]=(sg[2*nod]=='0' || sg[2*nod+1]=='0')?'0':(sg[2*nod+1]==sg[2*nod])?'+':'-';
     }
 }
-int sum(int n ,int start,int e,int l, int r) {
+char sum(int n ,int start,int e,int l, int r) {
      if(r < start or e < l)
     {
-         return 1;
+         return '+';
     }
     if(l <= start and e <= r)
     {
         return sg[n];
     }
-   int mid = (start + e) / 2;
-    int p1 = sum(2*n, start, mid, l, r);
-    int p2 = sum(2*n+1, mid+1, e, l, r);
-    return (p1 * p2);
+    int mid = (start + e) / 2;
+    char p1 = sum(2*n, start, mid, l, r);
+    char p2 = sum(2*n+1, mid+1, e, l, r);
+    return (p1=='0' || p2=='0')?'0':(p1==p2)?'+':'-';
 }
 void update(int nodo,int s,int e, int pos,int val)
 {
     if(s == e)
     {
         v[pos] = val;
-        sg[nodo] = val;
+        sg[nodo] = (val>0)?'+':(val<0)?'-':'0';
     }
     else
     {
@@ -64,7 +64,7 @@ void update(int nodo,int s,int e, int pos,int val)
         {
             update(2*nodo+1, mid+1, e, pos, val);
         }
-        sg[nodo] = sg[2*nodo] * sg[2*nodo+1];
+        sg[nodo] = (sg[2*nodo]=='0' && sg[2*nodo+1]=='0')?'0':(sg[2*nodo+1]==sg[2*nodo])?'+':'-';
     }
 }
 int main()
@@ -72,13 +72,13 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin>>n>>q;
-    //while(cin>>n>>q)
-    //{
-        //if(n==0 && q==0)break;
-        v.resize(n);
-        sg.resize(4*n);
-        forin(i,n)cin>>v[i];
+    while(cin>>n>>q)
+    {
+        if(n==0 && q==0)break;
+        sg.resize(4*n);int aux;
+        forin(i,n){cin>>aux;v.push_back(aux);}
         build(1,0,n-1);
+        mostrar(x,sg);cout<<"\n";
         forin(i,q)
         {
             char aux;
@@ -86,9 +86,9 @@ int main()
             if(aux=='C')
                 update(1,0,n-1,a-1,b);
             else if(aux=='P')
-                cout<<((sum(1,0,n-1,a-1,b-1)==0)?'0':((sum(1,0,n-1,a-1,b-1)>0)?'+':'-'));
+                cout<<((sum(1,0,n-1,a-1,b-1)=='0')?'0':((sum(1,0,n-1,a-1,b-1)=='+')?'+':'-'));
         }
         cout<<"\n";
-    //}
+    }
     return 0;
 }

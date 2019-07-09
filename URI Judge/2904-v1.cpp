@@ -19,10 +19,22 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+#define pi 3.14159265358979323846
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int n;
+    cin>>n;
+    vi v(n);
+    vi v1(n);int sum=0;
+    forin(i,n/2){cin>>v[i];sum+=v[i];}
+    forisn(i,n/2,n){cin>>v1[i-n/2];sum+=v1[i-n/2];}
+    double r=sum/(2*pi);
+    forin(i,n/2)
+    {
+        if(v[i]/r==v1[i]/r || v[i]/r==(v1[i]/r)+v1[i+1]/r){cout<<"Y\n";return 0;}
+    }
+    cout<<"N\n";
     return 0;
 }

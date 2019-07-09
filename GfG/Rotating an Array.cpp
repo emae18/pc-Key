@@ -23,6 +23,19 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    cout<<fixed<<setprecision(11);
+    int t,n,d;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        int v[n];
+        forin(i,n)cin>>v[i];
+        cin>>d;
+        forisn(i,d,n)cout<<v[i]<<" ";
+        forin(i,d)cout<<v[i]<<" ";
+        cout<<"\n";
 
+    }
     return 0;
 }

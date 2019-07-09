@@ -19,10 +19,29 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int h,w;
+    cin>>h>>w;
+    char v[h][w];
+    forin(i,h)
+        forin(j,w)cin>>v[i][j];
+    int cont=0;
+    forisn(i,1,h-1)
+    {
+        forisn(j,1,w-1)
+        {
+            if(v[i][j]=='*' && v[i+1][j]=='*'
+               && v[i-1][j]=='*' && v[i][j+1]=='*'
+               && v[i][j-1]=='*' && v[i+1][j+1]=='.'
+               && v[i+1][j-1]=='.' && v[i-1][j+1]=='.'
+               && v[i-1][j-1]=='.' )cont++;
+        }
+        if(cont>1)break;
+    }
+    cout<<((cont==1)?"YES\n":"NO\n");
     return 0;
 }

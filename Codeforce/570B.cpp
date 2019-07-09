@@ -23,6 +23,25 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int q;
+    cin>>q;
+    ll n,k;
+    while(q--)
+    {
+        cin>>n>>k;
+        vector<ll> v(n);
+        forin(i,n)cin>>v[i];
+        sort(all(v));
+        ll may = k+v[0];
+        ll men = abs(*v.rbegin()-k);
+        ll a=max(may,men);
+        //
+        bool band=true;
+        forin(i,n){
+            if(abs(v[i]-a)>k){band=false;break;}
+        }
+        cout<<((band)?a:-1)<<"\n";
 
+    }
     return 0;
 }

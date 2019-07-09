@@ -23,6 +23,24 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int q;
+    cin>>q;ll k,n,a,b;
+    while(q--)
+    {
+        cin>>k>>n>>a>>b;
+        ll m=n,k1=k,aux=0;
+        if(n*a<k)cout<<n<<"\n";
+        else if(n*a==k && k-((n-1)*a)>b)cout<<n-1<<"\n";
+        else if(n*a>k)
+        {
+            while(k1<=m*a){
+                m--;
+                aux++;
+            }
+            if(aux*b<(k-(m*a))){cout<<m<<"\n";
+            else if(b>(k-(m*a)) && b*n<k)cout<<0<<"\n";
 
+        }
+    }
     return 0;
 }

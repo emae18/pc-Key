@@ -23,6 +23,20 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int t;
+    cin>>t;
+    int n,k; string a;
+    msi m;
+    while(t--)
+    {
+        cin>>n;
+        while(n--)
+        {
+            cin>>a>>k;
+            m[a]+=k;
+        }
+        for(auto x :m)cout<<x.first<<" "<<x.second<<"\n";
+        m.clear();
+    }
     return 0;
 }

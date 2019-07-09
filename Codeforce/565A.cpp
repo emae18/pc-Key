@@ -19,10 +19,41 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+void jugar(deque<int> &p, int entra)
+{
+    p.pop_front();
+    p.push_back(entra);
+}
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int n;
+    ll aux;
+    cin>>n;
+    while(n--)
+    {
+        cin>>aux;
+        int ans=0;
+        while(aux>1)
+        {
+            if(aux%2==0){
+                    aux/=2;
+            }else if(aux%3==0)
+            {
+                aux/=3;
+                ++ans;
+            }else if(aux%5==0) {
+                aux/=5;
+                ans+=2;
+            }else
+            {
+                cout<<-1<<"\n";
+                break;
+            }
+            ++ans;
+        }
+        cout<<ans<<"\n";
+    }
     return 0;
 }

@@ -23,6 +23,11 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int n;
+    cin>>n;
+    vector<ll> v(n);
+    forin(i,n)cin>>v[i];
+    sort(all(v));
 
     return 0;
 }

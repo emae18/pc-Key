@@ -42,10 +42,10 @@ int sum(int n ,int start,int e,int l, int r) {
 }
 int rqm(int n,int s, int e, int l, int r)
 {
-    if(l>e || r<start)return -1;
-    if(start>=l && e<=r)return sg[n];
-    int p1=sum(2*n,start,(start+e)/2,l,r);
-    int p2=sum(2*n+1,(start+e)/2+1,e,l,r);
+    if(l>e || r<s)return -1;
+    if(s>=l && e<=r)return sg[n];
+    int p1=sum(2*n,s,(s+e)/2,l,r);
+    int p2=sum(2*n+1,(s+e)/2+1,e,l,r);
     if(p1==-1)return p2;
     if(p2==-1)return p1;
     return min(p1,p2);
@@ -58,9 +58,9 @@ int main()
     v.resize(n);
     forin(i,n)cin>>v[i];
     build(1,0,n-1);string aux;
-    //for(auto x : sg)cout<<x<<" ";
+    for(auto x : sg)cout<<x<<" ";
     cin>>a>>b;
-   //s cout<<"\n";
+    cout<<"\n";
     cout<<sum(1,0,n-1,a,b)<<"\n";
     return 0;
 }

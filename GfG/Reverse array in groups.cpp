@@ -23,6 +23,22 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k;cin>>n>>k;
+        vector<unsigned long long> v(n);
+        forin(i,n)cin>>v[i];
+        int z=n/k;int b=0,c=k;
+        while(z--)
+        {
+            for(int i=k-1;i>b-1;i--)
+                cout<<v[i]<<" ";
+            b+=c;
+            k+=c;
+        }
+        cout<<"\n";
+    }
     return 0;
 }

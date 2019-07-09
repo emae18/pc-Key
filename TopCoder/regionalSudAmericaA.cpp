@@ -19,10 +19,20 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+class EvilCakeCutter{
+public:
+
+    double successProbability(int w, int h, int w1, int h1)
+    {
+
+    }
+};
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    int w,h,w1,h1;
+    cin>>w>>h>>w1>>h1;
+    cout<<successProbability(w,h,w1,h1);
     return 0;
 }

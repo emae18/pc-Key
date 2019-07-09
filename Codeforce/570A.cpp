@@ -23,6 +23,21 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-
+    vi v;
+    forin(i,1004)
+    {
+        int n=0,k=i;
+        while(k/10!=0)
+        {
+            n+=k%10;
+            k/=10;
+        }
+        n+=k%10;
+        if(n%4==0)v.push_back(i);
+    }
+    //mostrar(x,v);cout<<"\n";
+    int a;
+    cin>>a;
+    cout<<*lower_bound(all(v),a)<<"\n";
     return 0;
 }
