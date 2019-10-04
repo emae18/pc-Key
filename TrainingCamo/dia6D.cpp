@@ -19,29 +19,35 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+map<ll,vi> m;
+vl v(100001);
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    float n,m;
-    string a;
-    while(cin>>m>>n)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        if(m==-1 && n==-1)return 0;
-        if(m==n){cout<<"********100%********\n";continue;}
-        float k=m/n;
-        int x= k*100;
-        k=(k*20)+0.5 - ((k*20)<0);
-        int k1=(int)k;
-        forin(i,k1)a.push_back('*');
-        forisn(i,k1,20)a.push_back('-');
-        stringstream ss;
-        ss<<x;
-        string p=ss.str();
-        forin(i,p.size())a[9+i]=p[i];
-        a[9+p.size()]='%';
-        cout<<a<<"\n";
-        a="";
+        int n;
+        cin>>n;
+
+        int lcm=0;
+
+        for(int i=1;i<=n;i++)
+        {
+            //cout<<"termino->"<<i<<" "<<(i*n)/__gcd(i,n)<<"\n";
+            lcm+=(i*n)/__gcd(i,n);
+        }
+        //si el gcd (son coprimos)==1
+            // i*n
+        // n%i==0 -> +=n
+        // Suponer que todos son coprimos y restan luego los que no son coprimos
+        //
+        int lcm2=(((1*n)/__gcd(1,n))*((n*n)/__gcd(n,n)))*n/2;
+        cout<<lcm<<"\n";
+
     }
     return 0;
 }

@@ -39,6 +39,13 @@ bool isRisk(int x,int k)
     return pm[x];
 
 }
+
+// crer vectores con el mayor primo cercano 
+// ordenarlos
+// precalcular
+// Segment Tree
+// Persistencia
+
 int main()
 {
     ios::sync_with_stdio(0);

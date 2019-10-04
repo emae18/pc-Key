@@ -8,6 +8,7 @@
 #define desc greater<int>()
 #define asc less<int>()
 #define all(v) v.begin(),v.end()
+#define MOD 1000000007
 //loops and more
 using namespace std;
 typedef long long ll;
@@ -23,25 +24,17 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    float n,m;
-    string a;
-    while(cin>>m>>n)
-    {
-        if(m==-1 && n==-1)return 0;
-        if(m==n){cout<<"********100%********\n";continue;}
-        float k=m/n;
-        int x= k*100;
-        k=(k*20)+0.5 - ((k*20)<0);
-        int k1=(int)k;
-        forin(i,k1)a.push_back('*');
-        forisn(i,k1,20)a.push_back('-');
-        stringstream ss;
-        ss<<x;
-        string p=ss.str();
-        forin(i,p.size())a[9+i]=p[i];
-        a[9+p.size()]='%';
-        cout<<a<<"\n";
-        a="";
+    int n;
+    cin>>n;
+    vi v(n);
+    forin(i,n)cin>>v[i];
+    ll ans=0;
+    forin(z,n){
+        forisn(x,z,n)
+            forisn(i,x,n)
+                if(v[i]%(x+1)==0)ans++;
+        (++ans)%MOD;
     }
+    cout<<(ans-3)<<"\n";
     return 0;
 }

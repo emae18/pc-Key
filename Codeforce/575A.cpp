@@ -19,29 +19,45 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+vector<vi> g;
+bool visited[150001];
+vi a;
+void dfs(int nodo)
+{
+    visited[nodo]=1;
+    a.push_back(nodo);
+    forin(i, g[nodo].size())
+        if(!visited[g[nodo][i]])dfs(g[nodo][i]);
+}
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    float n,m;
-    string a;
-    while(cin>>m>>n)
+    int q;
+    cin>>q;
+    while(q--)
     {
-        if(m==-1 && n==-1)return 0;
-        if(m==n){cout<<"********100%********\n";continue;}
-        float k=m/n;
-        int x= k*100;
-        k=(k*20)+0.5 - ((k*20)<0);
-        int k1=(int)k;
-        forin(i,k1)a.push_back('*');
-        forisn(i,k1,20)a.push_back('-');
-        stringstream ss;
-        ss<<x;
-        string p=ss.str();
-        forin(i,p.size())a[9+i]=p[i];
-        a[9+p.size()]='%';
-        cout<<a<<"\n";
-        a="";
+        vl v(3);
+        forin(i,3)cin>>v[i];
+        sort(all(v));
+        ll alice=v[2];
+        ll bob=v[1];
+        bob+=v[0];
+        ll aux=0,aux2;
+        aux=((alice-bob));
+        aux2=((bob-alice));
+        if(alice>bob)
+        {
+            bob+=aux/2;
+            alice-=(aux/2)+(aux%2);
+        }else if(bob>alice)
+        {
+            alice+=aux2/2;
+            bob-=(aux2/2)-(aux2%2);
+
+        }
+        cout<<alice<<"\n";
     }
     return 0;
 }
+
