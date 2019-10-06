@@ -23,6 +23,30 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    double p,a,b,c,d,n;
+    cin>>p>>a>>b>>c>>d>>n;
+    cout<<fixed<<setprecision(6);
+    double m=0.00,ans;
+    vector<double> o;
+    for(int i=1;i<=n;i++){
+        ans=p*((sin(a*i+b))+(cos(c*i+d)+2));
+        m=max(ans,m);
+        o.push_back(ans);
+    }
+    for(int i=0;i<o.size();i++)
+    {
 
+    }
+    set<double> ss;
+    for(int i=0;i<o.size();i++){
+        ss.insert(abs(o[i]-o[i-1]));
+    }
+
+    //for(auto x: ss)cout<<x<<" ";
+    cout<<"\n";
+    for(auto x:o)cout<<x<<" ";
+    cout<<"\n";
+    cout<<*ss.rbegin()<<"\n";
+    cout<<m<<"\n";
     return 0;
 }
