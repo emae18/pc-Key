@@ -19,29 +19,29 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+#define pi 3.14159265358979323846
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    float n,m;
-    string a;
-    while(cin>>m>>n)
-    {
-        if(m==-1 && n==-1)return 0;
-        if(m==n){cout<<"********100%********\n";continue;}
-        float k=m/n;
-        int x= k*100;
-        k=(k*20)+0.5 - ((k*20)<0);
-        int k1=(int)k;
-        forin(i,k1)a.push_back('*');
-        forisn(i,k1,20)a.push_back('-');
-        stringstream ss;
-        ss<<x;
-        string p=ss.str();
-        forin(i,p.size())a[9+i]=p[i];
-        a[9+p.size()]='%';
-        cout<<a<<"\n";
-        a="";
-    }
+    int n;
+    cin>>n;
+    vi v(n/2);
+    vi v1(n/2);int sum=0;
+    forin(i,n/2){cin>>v[i];sum+=v[i];}
+    forisn(i,n/2,n){cin>>v1[i-n/2];sum+=v1[i-n/2];}
+    vi vsu;
+    for(auto x : v)vsu.push_back(x);
+    for(auto x : v1)vsu.push_back(x);
+    vi sumP;
+    sumP.push_back(v[0]);
+    for(int i=1;i<vsu.size();i++)
+        sumP.push_back(vsu[i]+*sumP.rbegin());
+    int mP=sum/2;
+    //cout<<sum<<"\n";
+  //  reverse(all(v1));
+    int cont =0;
+
+
     return 0;
 }

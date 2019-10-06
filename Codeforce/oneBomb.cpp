@@ -23,25 +23,34 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    float n,m;
-    string a;
-    while(cin>>m>>n)
-    {
-        if(m==-1 && n==-1)return 0;
-        if(m==n){cout<<"********100%********\n";continue;}
-        float k=m/n;
-        int x= k*100;
-        k=(k*20)+0.5 - ((k*20)<0);
-        int k1=(int)k;
-        forin(i,k1)a.push_back('*');
-        forisn(i,k1,20)a.push_back('-');
-        stringstream ss;
-        ss<<x;
-        string p=ss.str();
-        forin(i,p.size())a[9+i]=p[i];
-        a[9+p.size()]='%';
-        cout<<a<<"\n";
-        a="";
+    int n,m;
+    cin>>n>>m;
+    char c[n+1][m+1];
+    vi f(n),co(m);
+    int bombs=0;
+    forin(i,n){
+        forin(k,m){
+            cin>>c[i][k];
+            if(c[i][k]=='*'){
+                    bombs++;
+                //cout<<i<<"-"<<k<<": ->" <<bombs<<"\n";
+                f[i]++;
+                co[k]++;
+            }
+        }
     }
+    forin(i,n){
+        forin(k,m){
+            //cout<<f[i]<<":"<<i<<" - "<<co[k]<<":"<<k<<"\n cont:"<<bombs<<"\n";
+            int sum=f[i]+co[k];
+            if(c[i][k]=='*')sum--;
+            if(sum==bombs){
+                cout<<"YES\n"<<i+1<<" "<<k+1<<"\n";
+                return 0;
+            }
+        }
+    }
+    cout<<"NO\n";
+
     return 0;
 }

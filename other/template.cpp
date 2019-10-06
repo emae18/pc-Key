@@ -19,29 +19,35 @@ typedef pair<int,int> pii;
 typedef set<int>::iterator itsi;
 typedef map<string,int>::iterator itmsi;
 //solve
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    float n,m;
-    string a;
-    while(cin>>m>>n)
-    {
-        if(m==-1 && n==-1)return 0;
-        if(m==n){cout<<"********100%********\n";continue;}
-        float k=m/n;
-        int x= k*100;
-        k=(k*20)+0.5 - ((k*20)<0);
-        int k1=(int)k;
-        forin(i,k1)a.push_back('*');
-        forisn(i,k1,20)a.push_back('-');
-        stringstream ss;
-        ss<<x;
-        string p=ss.str();
-        forin(i,p.size())a[9+i]=p[i];
-        a[9+p.size()]='%';
-        cout<<a<<"\n";
-        a="";
+    double p,a,b,c,d,n;
+    cin>>p>>a>>b>>c>>d>>n;
+    cout<<fixed<<setprecision(6);
+    double m=0.00,ans;
+    vector<double> o;
+    for(int i=1;i<=n;i++){
+        ans=p*((sin(a*i+b))+(cos(c*i+d)+2));
+        m=max(ans,m);
+        o.push_back(ans);
     }
+    for(int i=0;i<o.size();i++)
+    {
+
+    }
+    set<double> ss;
+    for(int i=0;i<o.size();i++){
+        ss.insert(abs(o[i]-o[i-1]));
+    }
+
+    //for(auto x: ss)cout<<x<<" ";
+    cout<<"\n";
+    for(auto x:o)cout<<x<<" ";
+    cout<<"\n";
+    cout<<*ss.rbegin()<<"\n";
+    cout<<m<<"\n";
     return 0;
 }
