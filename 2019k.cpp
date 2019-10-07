@@ -29,7 +29,19 @@ int main()
     stable_sort(j.begin(),j.end(),comp);
     stable_sort(d.begin(),d.end(),comp);
     for(int i=0;i<j.size();i++){
-
+        pair<int,int> may=j[i];
+        int z=i+1;
+        while(j[z++].first==may.first && j[z].second<=may.second){
+            j.erase(j.begin(),j.begin()+z);
+        }
     }
+    for(int i=0;i<d.size();i++){
+        pair<int,int> may=j[i];
+        int z=i+1;
+        while(d[z++].first==may.first && d[z].second<=may.second){
+            d.erase(d.begin(),d.begin()+z);
+        }
+    }
+
     return 0;
 }
